@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS users (
+    id UUID NOT NULL PRIMARY KEY,
+    username VARCHAR(64) NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    user_role role_enum NOT NULL,
+    refresh_token TEXT,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    deleted_at TIMESTAMP WITHOUT TIME ZONE
+);

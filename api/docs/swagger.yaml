@@ -1,0 +1,1576 @@
+basePath: /v1
+definitions:
+  models.AudioTrack:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      input_url:
+        type: string
+      lang_code:
+        type: string
+      language:
+        type: string
+      pipeline_id:
+        type: string
+      size_kb:
+        type: number
+    type: object
+  models.AudioTrackRequest:
+    properties:
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+    type: object
+  models.CompaniesFindResponse:
+    properties:
+      companies:
+        items:
+          $ref: '#/definitions/models.CompanyResponse'
+        type: array
+      count:
+        type: integer
+    type: object
+  models.CompanyApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.CompaniesFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.CompanyApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.CompanyResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.CompanyCreateReq:
+    properties:
+      id:
+        type: string
+      owner_id:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+  models.CompanyResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      owner:
+        $ref: '#/definitions/models.UserResponse'
+      owner_id:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CompanyUpdateReq:
+    properties:
+      id:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+  models.CreatePipelineIntegrationReq:
+    properties:
+      audio_tracks:
+        items:
+          $ref: '#/definitions/models.AudioTrackRequest'
+        type: array
+      bucket_name:
+        type: string
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+      output_key:
+        type: string
+      project_id:
+        type: string
+      resolutions:
+        items:
+          type: string
+        type: array
+      subtitle:
+        items:
+          $ref: '#/definitions/models.SubtitleRequest'
+        type: array
+    type: object
+  models.DefaultResponse:
+    properties:
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.MediaResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.UploadPhotoRes'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.PipelineApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.PipelinesFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.PipelineApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.PipelineResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.PipelineCreateReq:
+    properties:
+      audio_tracks:
+        items:
+          $ref: '#/definitions/models.AudioTrack'
+        type: array
+      fail_description:
+        type: string
+      id:
+        type: string
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+      max_resolution:
+        type: string
+      output_key:
+        type: string
+      output_path:
+        type: string
+      project_id:
+        type: string
+      resolutions_string:
+        items:
+          type: string
+        type: array
+      size_kb:
+        type: number
+      stage:
+        type: string
+      subtitle:
+        items:
+          $ref: '#/definitions/models.Subtitle'
+        type: array
+      transcode_duration_secs:
+        type: number
+      upload_duration_secs:
+        type: number
+    type: object
+  models.PipelineResponse:
+    properties:
+      audio_tracks:
+        items:
+          $ref: '#/definitions/models.AudioTrack'
+        type: array
+      created_at:
+        type: string
+      fail_description:
+        type: string
+      id:
+        type: string
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+      max_resolution:
+        type: string
+      output_key:
+        type: string
+      output_path:
+        type: string
+      preparation_duration_seconds:
+        type: number
+      project_id:
+        type: string
+      resolutions:
+        items:
+          $ref: '#/definitions/models.Resolution'
+        type: array
+      resolutions_string:
+        items:
+          type: string
+        type: array
+      size_kb:
+        type: number
+      stage:
+        type: string
+      stage_status:
+        type: string
+      subtitle:
+        items:
+          $ref: '#/definitions/models.Subtitle'
+        type: array
+      transcode_duration_secs:
+        type: number
+      updated_at:
+        type: string
+      upload_duration_secs:
+        type: number
+      video_duration:
+        type: number
+      webhook_last_retry:
+        type: string
+      webhook_retry_count:
+        type: integer
+      webhook_status:
+        type: boolean
+    type: object
+  models.PipelineUpdateReq:
+    properties:
+      fail_description:
+        type: string
+      id:
+        type: string
+      input_url:
+        type: string
+      max_resolution:
+        type: string
+      output_key:
+        type: string
+      output_path:
+        type: string
+      preparation_duration_seconds:
+        type: number
+      resolutions:
+        items:
+          $ref: '#/definitions/models.Resolution'
+        type: array
+      resolutions_string:
+        items:
+          type: string
+        type: array
+      size_kb:
+        type: number
+      stage:
+        type: string
+      stage_status:
+        type: string
+      transcode_duration_secs:
+        type: number
+      upload_duration_secs:
+        type: number
+      video_duration:
+        type: number
+      webhook_last_retry:
+        type: string
+      webhook_retry_count:
+        type: integer
+      webhook_status:
+        type: boolean
+    type: object
+  models.PipelinesFindResponse:
+    properties:
+      count:
+        type: integer
+      pipelines:
+        items:
+          $ref: '#/definitions/models.PipelineResponse'
+        type: array
+    type: object
+  models.ProjectApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.ProjectsFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.ProjectApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.ProjectResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.ProjectCreateReq:
+    properties:
+      access_key:
+        type: string
+      company_id:
+        type: string
+      id:
+        type: string
+      owner_id:
+        type: string
+      secret_key:
+        type: string
+      status:
+        type: string
+      storage_id:
+        type: string
+      title:
+        type: string
+    type: object
+  models.ProjectNameUpdateReq:
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  models.ProjectResponse:
+    properties:
+      access_key:
+        type: string
+      company:
+        $ref: '#/definitions/models.CompanyResponse'
+      company_id:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: string
+      owner:
+        $ref: '#/definitions/models.UserResponse'
+      owner_id:
+        type: string
+      project_id:
+        type: string
+      related_projects:
+        items:
+          $ref: '#/definitions/models.RelatedProjects'
+        type: array
+      secret_key:
+        type: string
+      status:
+        type: string
+      storage:
+        $ref: '#/definitions/models.StorageResponse'
+      storage_id:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      webhook:
+        $ref: '#/definitions/models.WebhookResponse'
+    type: object
+  models.ProjectUpdateReq:
+    properties:
+      access_key:
+        type: string
+      id:
+        type: string
+      secret_key:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+  models.ProjectsFindResponse:
+    properties:
+      count:
+        type: integer
+      projects:
+        items:
+          $ref: '#/definitions/models.ProjectResponse'
+        type: array
+    type: object
+  models.RelatedProjects:
+    properties:
+      label:
+        type: string
+      value:
+        type: string
+    type: object
+  models.Resolution:
+    properties:
+      bitrate:
+        type: string
+      measure:
+        type: string
+      resolution:
+        type: string
+    type: object
+  models.StorageApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.StorageFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.StorageApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.StorageResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.StorageFindResponse:
+    properties:
+      count:
+        type: integer
+      storages:
+        items:
+          $ref: '#/definitions/models.StorageResponse'
+        type: array
+    type: object
+  models.StorageResponse:
+    properties:
+      access_key:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      domain_name:
+        type: string
+      id:
+        type: string
+      region:
+        type: string
+      secret_key:
+        type: string
+      type:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.StorageUpdateReq:
+    properties:
+      access_key:
+        type: string
+      domain_name:
+        type: string
+      id:
+        type: string
+      region:
+        type: string
+      secret_key:
+        type: string
+      type:
+        type: string
+    type: object
+  models.Subtitle:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+      pipeline_id:
+        type: string
+      size_kb:
+        type: number
+    type: object
+  models.SubtitleRequest:
+    properties:
+      input_url:
+        type: string
+      language:
+        type: string
+      language_code:
+        type: string
+    type: object
+  models.UploadPhotoRes:
+    properties:
+      photo_url:
+        type: string
+    type: object
+  models.UserApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.UserFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.UserApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.UserResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.UserCreateReq:
+    properties:
+      id:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UserFindResponse:
+    properties:
+      count:
+        type: integer
+      users:
+        items:
+          $ref: '#/definitions/models.UserResponse'
+        type: array
+    type: object
+  models.UserLoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UserResponse:
+    properties:
+      access_token:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      password:
+        type: string
+      refresh_token:
+        type: string
+      role:
+        type: string
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+  models.WebhookApiFindResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.WebhookFindResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.WebhookApiResponse:
+    properties:
+      body:
+        $ref: '#/definitions/models.WebhookResponse'
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+  models.WebhookCreateReq:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      project_id:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+      webhook_type:
+        type: string
+    type: object
+  models.WebhookFindResponse:
+    properties:
+      count:
+        type: integer
+      webhooks:
+        items:
+          $ref: '#/definitions/models.WebhookResponse'
+        type: array
+    type: object
+  models.WebhookResponse:
+    properties:
+      active:
+        type: boolean
+      created_at:
+        type: string
+      id:
+        type: string
+      project_id:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+      webhook_type:
+        type: string
+    type: object
+  models.WebhookUpdateReq:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+      webhook_type:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Here QA can test and frontend or mobile developers can get information
+    of API endpoints.
+  title: Monolithic project API Endpoints
+  version: "1.0"
+paths:
+  /company:
+    post:
+      consumes:
+      - application/json
+      description: Here company can be created.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.CompanyCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Create company
+      tags:
+      - Company
+    put:
+      consumes:
+      - application/json
+      description: Here company can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.CompanyUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update company
+      tags:
+      - Company
+  /company/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Here company can be got.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get company by key
+      tags:
+      - Company
+  /company/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all companies can be got.
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get companies list
+      tags:
+      - Company
+  /dashboard/statistics:
+    get:
+      consumes:
+      - application/json
+      description: Here all dashboard statistics can be taken.
+      parameters:
+      - in: query
+        name: company_id
+        type: string
+      - in: query
+        name: last_n_days
+        type: integer
+      - in: query
+        name: project_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get PipelineDashboarStatistics
+      tags:
+      - Dashboard
+  /media/photo:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Through this api frontent can upload photo and get the link to
+        the media.
+      parameters:
+      - description: File
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.MediaResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Upload media
+      tags:
+      - Media
+  /pipeline:
+    post:
+      consumes:
+      - application/json
+      description: Here pipeline can be created.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.PipelineCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Create pipeline
+      tags:
+      - Pipeline
+    put:
+      consumes:
+      - application/json
+      description: Here pipeline can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.PipelineUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update pipeline
+      tags:
+      - Pipeline
+  /pipeline/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Here pipeline can be deleted.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete pipeline
+      tags:
+      - Pipeline
+    get:
+      consumes:
+      - application/json
+      description: Here pipeline can be got.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get pipeline by key
+      tags:
+      - Pipeline
+  /pipeline/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all pipelines can be got.
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: project_id
+        type: string
+      - in: query
+        name: search
+        type: string
+      - description: -1 0 1
+        in: query
+        name: webhook_status
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get pipelines list
+      tags:
+      - Pipeline
+  /project:
+    post:
+      consumes:
+      - application/json
+      description: Here project can be created.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Create project
+      tags:
+      - Project
+    put:
+      consumes:
+      - application/json
+      description: Here project can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update project
+      tags:
+      - Project
+  /project/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Here project can be deleted.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete project
+      tags:
+      - Project
+    get:
+      consumes:
+      - application/json
+      description: Here project can be got.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get project by key
+      tags:
+      - Project
+  /project/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all projects can be got.
+      parameters:
+      - in: query
+        name: company_id
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get projects list
+      tags:
+      - Project
+  /project/name:
+    put:
+      consumes:
+      - application/json
+      description: Here project name can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectNameUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update project
+      tags:
+      - Project
+  /project/pid:
+    get:
+      consumes:
+      - application/json
+      description: Here project can be got by project ID -> 1000001.
+      parameters:
+      - description: project_id
+        in: query
+        name: project_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get project by key
+      tags:
+      - Project
+  /public/pipeline:
+    post:
+      consumes:
+      - application/json
+      description: Here pipeline can be created.
+      parameters:
+      - description: Access key of a project
+        in: header
+        name: AccessKey
+        required: true
+        type: string
+      - description: Secret key of a project
+        in: header
+        name: SecretKey
+        required: true
+        type: string
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreatePipelineIntegrationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PipelineApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      summary: Create pipeline
+      tags:
+      - Public Pipeline
+  /storage:
+    put:
+      consumes:
+      - application/json
+      description: Here storage can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.StorageUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.StorageApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update storage
+      tags:
+      - Storage
+  /storage/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Here storage can be deleted.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete storage
+      tags:
+      - Storage
+  /storage/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all storages can be got.
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.StorageApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      summary: Get storages list
+      tags:
+      - Storage
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Here user can be created.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Create user
+      tags:
+      - User
+  /user/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Here user can be got.
+      parameters:
+      - description: uuid
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get user by key
+      tags:
+      - User
+  /user/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all users can be got.
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Get users list
+      tags:
+      - User
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      description: Here user can be logged in.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      summary: Login user
+      tags:
+      - User
+  /webhook:
+    post:
+      consumes:
+      - application/json
+      description: Here webhook can be created.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.WebhookCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.WebhookApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Create webhook
+      tags:
+      - Webhook
+    put:
+      consumes:
+      - application/json
+      description: Here webhook can be updated.
+      parameters:
+      - description: post info
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.WebhookUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.WebhookApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Update webhook
+      tags:
+      - Webhook
+  /webhook/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Here webhook can be deleted.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete webhook
+      tags:
+      - Webhook
+    get:
+      consumes:
+      - application/json
+      description: Here webhook can be got.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.WebhookApiResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      summary: Get webhook by key
+      tags:
+      - Webhook
+  /webhook/list:
+    get:
+      consumes:
+      - application/json
+      description: Here all webhooks can be got.
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: order_by_created_at
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: project_id
+        type: string
+      - in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.WebhookApiFindResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DefaultResponse'
+      summary: Get webhooks list
+      tags:
+      - Webhook
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

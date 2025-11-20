@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: transcode.uz
+  description: |-
+    This is simple and easy to use and integrate with video transcoder that converts any type of video into streamable HLS formatted chunks.
+
+    Some useful links:
+    - [LinkedIn of Owner](https://www.linkedin.com/in/azizbek-hojimurodov-774454238/)
+    - [YouTube of Owner](https://www.youtube.com/channel/UC501uCYQHuo4k6AFBuWP9qQ)
+
+  # termsOfService: http://swagger.io/terms/
+  contact:
+    email: azizbekhojimurodov4@gmail.com
+  version: 1.0.0
+# externalDocs:
+#   description: Find out more about Swagger
+#   url: http://swagger.io
+servers:
+  - url: https://dev.api.admin.transcode.uz
+tags:
+  - name: public
+    description: All Public Paths
+    # externalDocs:
+    #   description: Find out more
+      # url: http://swagger.io
+paths:
+  /public/pipeline:
+    post:
+      tags:
+        - public
+      summary: Create new pipeline
+      description: Crete new pipeline to project
+      operationId: create_pipeline
+      parameters:
+        - name: AccessKey
+          in: header
+          description: Project Access Key
+          required: true
+          schema:
+            type: string
+        - name: SecretKey
+          in: header
+          description: Project Secret Key
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Pipeline create request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pipeline'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineApiResponse'
+        '400':
+          description: Invalid input
+      # security:
+      #   - petstore_auth:
+      #       - write:pets
+      #       - read:pets
+components:
+  schemas:
+    Pipeline:
+      type: object
+      properties:
+        bucket_name:
+          type: string
+          example: transcoded-videos
+        input_url:
+          type: string
+          example: https://my.cdn.uz/video1.mp4
+        output_key:
+          type: string
+          example: output-video-id
+        project_id:
+          type: string
+          example: TR-1000000
+    PipelineResponse:
+      type: object
+      properties:
+        id: 
+          type: string
+          example: 0539086f-4176-4045-8e65-86a36e0204dc
+        bucket_name:
+          type: string
+          example: transcoded-videos
+        input_url:
+          type: string
+          example: https://my.cdn.uz/video1.mp4
+        output_key:
+          type: string
+          example: output-video-id
+        stage: 
+          type: string
+          example: initial
+        stage_status:
+          type: string
+          example: pending
+        fail_description: 
+          type: string
+          example: ""
+        size_kb:
+          type: number
+          format: double
+          example: 16.5
+        created_at:
+            type: string
+            format: date-time
+        updated_at: 
+            type: string
+            format: date-time
+    PipelineApiResponse:
+      type: object
+      properties: 
+        error_code: 
+          type: number
+          default: 1000
+        error_message: 
+          type: string 
+          default: ""
+        body:
+          $ref: '#/components/schemas/PipelineResponse'
+
+  # securitySchemes:
+  #   petstore_auth:
+  #     type: oauth2
+  #     flows:
+  #       implicit:
+  #         authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+  #         scopes:
+  #           write:pets: modify pets in your account
+  #           read:pets: read your pets
+  #   api_key:
+  #     type: apiKey
+  #     name: api_key
+  #     in: header

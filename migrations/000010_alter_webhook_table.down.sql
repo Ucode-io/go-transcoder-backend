@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS idx_unique_columns_project_id_webhook_type;

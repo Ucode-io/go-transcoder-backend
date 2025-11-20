@@ -1,0 +1,1 @@
+ALTER TABLE webhooks ADD active BOOLEAN NOT NULL DEFAULT False;

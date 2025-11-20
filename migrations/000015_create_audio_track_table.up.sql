@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS audio_tracks (
+   id UUID NOT NULL PRIMARY KEY,
+   pipeline_id UUID NOT NULL REFERENCES pipelines(id),
+   size_kb FLOAT NOT NULL,
+   input_url VARCHAR(200) NOT NULL,
+   lang_code varchar(2) NOT NULL,
+   lang varchar(50) NOT NULL,
+   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+   updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+   deleted_at TIMESTAMP WITHOUT TIME ZONE
+);
