@@ -16,8 +16,7 @@ jobs:
     with:
       ENVIRONMENT: production
       ENV_TAG: latest
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
 
   ci-cd-staging:
     if: github.ref_name == 'staging'
@@ -25,5 +24,4 @@ jobs:
     with:
       ENVIRONMENT: staging
       ENV_TAG: test
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
