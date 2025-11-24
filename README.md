@@ -16,7 +16,7 @@ make compose_up
 ```
 To stop the program
 ```
-make compose_down
+make compose_downn
 ```
 
 After program is started successfully, you can check if it is running using this address.
