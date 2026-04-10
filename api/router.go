@@ -28,7 +28,7 @@ type Option struct {
 	Postgres   storage.StorageI
 	JWTHandler t.JWTHandler
 	Redis      redisrepo.InMemoryStorageI
-}
+} 
 
 // New ...
 // @title           Monolithic project API Endpoints
